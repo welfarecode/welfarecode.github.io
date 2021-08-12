@@ -1,32 +1,50 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <Navbar />
+    <div id="content">
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </div>
-    <router-view />
+    <div @click="clickit">{{ count }}</div>
+    <Footer />
   </div>
 </template>
+<script>
+  import 'animate.css';
+  import Navbar from './components/layout/Header';
+  import Footer from './components/layout/footer';
 
+  export default {
+    name: "App",
+    components: {
+      Navbar,
+      Footer,
+    },
+    data() {
+      return {
+        count: 0
+      }
+    },
+    methods: {
+      clickit: function() {
+        this.count++;
+      }
+    }
+  };
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  .fade-enter,
+  .fade-leave {
+    opacity: 0;
+  }
 
-#nav {
-  padding: 30px;
-}
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  #content {
+    margin-bottom: 10rem;
+  }
 </style>

@@ -1,23 +1,54 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/Home";
+import news from "../views/news";
+import member from "../views/member";
+import introduction from "../views/club/introduction";
+import value from "../views/club/values";
+import milestone from "../views/club/milestone";
+import creditbot from "../views/services/creditbot";
+import lunchon from "../views/services/lunchon";
+import etc from "../views/services/etc";
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
     path: "/",
-    name: "Home",
+    name: "home",
+    alias: "/home",
     component: Home,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/club/introduction",
+    component: introduction,
+  },
+  {
+    path: "/club/milestone",
+    component: milestone,
+  },
+  {
+    path: "/club/value",
+    component: value,
+  },
+  {
+    path: "/services/creditbot",
+    component: creditbot,
+  },
+  {
+    path: "/services/lunchon",
+    component: lunchon,
+  },
+  {
+    path: "/services/etc",
+    component: etc,
+  },
+  {
+    path: "/news",
+    component: news,
+  },
+  {
+    path: "/member",
+    component: member,
   },
 ];
 
