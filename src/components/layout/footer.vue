@@ -11,10 +11,10 @@
 
             <p>
               PHONE NUMBER : 010-2078-9868<br>
-              E-MAIL : 20095@galmae.hs.kr<br>
+              <a href="mailto:20095@galmae.hs.kr" class="email">E-MAIL : 20095@galmae.hs.kr</a><br>
               <span class="full-text">
                 ANOTHER WEBSITE : <a href="https://www.notion.so/welfarecode/Welfare-Code" class="notion">
-                  https://www.notion.so/welfarecode/Welfare-Code</a>
+                  WELFARECODE/NOTION</a>
               </span>
               <span class="short-text">
                 ANOTHER WEBSITE : <a href="https://www.notion.so/welfarecode/Welfare-Code" class="notion">
@@ -44,7 +44,7 @@
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(255, 255, 255, 0.103);">
         © There is no Copyright:
-        <a class="text-dark" href="https://team-welfarecode.github.io/" target="_blank">WELFARE-CODE</a>
+        WELFARE-CODE
       </div>
       <!-- Copyright -->
     </footer>
@@ -57,24 +57,46 @@ export default {
 }
 </script>
 <style>
+
   .footer-container {
       padding-top: 2rem;
     }
 
     .notion {
+      font-weight: 700;
       text-decoration: none;
+      color: plum;
+    }
+
+    .notion:hover {
+      color: skyblue;
+    }
+
+    .email {
+      text-decoration: none;
+      color: black;
+    }
+
+    .email:hover {
+      color: gray;
     }
 
     .short-text {
       display: none;
     }
 
+    .full-text {
+      text-decoration: none;
+    }
+
     /* 작은 화면일 때 푸터에 웹사이트 주소 대신 'NOTION'으로 표기 */
 
     @media(max-width: 600px) {
+      
 
       .full-text {
         display: none;
+        color: #000;
       }
 
       .short-text {

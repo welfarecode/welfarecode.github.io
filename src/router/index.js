@@ -49,6 +49,7 @@ const routes = [{
   {
     path: "/member",
     component: member,
+    alias: "/members",
   },
 ];
 

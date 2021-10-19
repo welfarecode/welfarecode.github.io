@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <img src="../assets/news.jpg" width="100%"/>
+        <img src="https://imgur.com/eEcajIt.png" width="100%"/>
         <h1>NEWS PAGE</h1>
     </div>
 </template>

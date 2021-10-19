@@ -6,7 +6,6 @@
         <router-view />
       </transition>
     </div>
-    <div @click="clickit">{{ count }}</div>
     <Footer />
   </div>
 </template>

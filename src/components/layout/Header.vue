@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="thumbnail">
         <router-link to="/" class="navbar-brand">
-          <img src="../../assets/logo.png" width="100" height="100" alt="LOGO">
+          <img src="../../assets/logo.png" width="80" height="80" alt="LOGO">
         </router-link>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -38,7 +38,7 @@
                 <router-link to="/services/creditbot" class="dropdown-item">고교학점제 봇</router-link>
               </li>
               <li>
-                <router-link to="/services/lunchon" class="dropdown-item">LUNCHON</router-link>
+                <router-link to="/services/lunchon" class="dropdown-item">LUNCH-ON</router-link>
               </li>
               <li>
                 <router-link to="/services/etc" class="dropdown-item">AND SO ON!</router-link>
@@ -64,12 +64,6 @@
 <script>
   export default {
     name: 'navbar',
-    // watch: {
-    //   '$route'(to, from) {
-    //     $('.container-fluid').addClass('change');
-    //     $('.container-fluid').removeClass('change');
-    //   }
-    // }
   };
 </script>
 <style>
@@ -113,5 +107,11 @@
 
   .thumbnail {
     margin-right: 18rem;
+  }
+
+   @media screen and (max-width: 959px) {
+    .thumbnail {
+        margin-right: 0rem;
+    } 
   }
 </style>
