@@ -1,34 +1,13 @@
 <template>
     <div id="app">
-        <image-slider>
-            <div @click="prev" class="prev_btn">
-                <img src="https://imgur.com/MCZoEJ7.png" />
-                <span class="blind">이전</span>
-            </div>
-            <div @click="next" class="next_btn">
-                <img src="https://imgur.com/X5zAUW4.png" />
-                <span class="blind">다음</span>
-            </div>
-            <div class="number">
-                <span class="currentNumber">{{show_currentNumber + 1}}</span> |
-                <span class="amount">4</span>
-            </div>
-            <transition-group name="fade">
-                <div v-for="i in [currentNumber]" :key="i">
-                    <img :src="currentImg" width="100%" height="600px" v-on:mouseover="stopRotation"
-                        v-on:mouseout="startRotation" />
-                </div>
-                <div class="back_title" :key="title">
-                    <span>{{ title[show_currentNumber] }}</span>
-                </div>
-                <div class="alt" :key="alt">
-                    <span v-html="alt[show_currentNumber]"></span>
-                </div>
-            </transition-group>
-
-        </image-slider>
-
-
+        <swiper class="swiper" :options="swiperOption">
+            <swiper-slide v-for="(image,index) in images" :key="image">
+                <img :src="image" />
+                <h1>{{ index+1 }} | {{ images.length }}</h1>
+            </swiper-slide>
+            <div class="swiper-button-prev" slot="button-prev"></div>
+            <div class="swiper-button-next" slot="button-next"></div>
+        </swiper>
         <div class="main_content">
             <ul class="content_summary">
                 <li class="summary_container">
@@ -73,8 +52,16 @@
     </div>
 </template>
 <script>
+    import {
+        Swiper,
+        SwiperSlide
+    } from 'vue-awesome-swiper'
+    import 'swiper/css/swiper.css'
     export default {
-
+        components: {
+            Swiper,
+            SwiperSlide
+        },
         // 데이터 모음
         data() {
             return {
@@ -89,18 +76,28 @@
                 ],
                 currentNumber: 0,
                 timer: null,
+                swiperOption: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev'
+                    }
+                },
             }
         },
         mounted() {
             this.startRotation();
         },
         computed: {
-            currentImg: function() {
-                return this.images[Math.abs(this.currentNumber) % this.images.length]; 
+            currentImg: function () {
+                return this.images[Math.abs(this.currentNumber) % this.images.length];
             },
-            show_currentNumber : function() {
-                return Math.abs(this.currentNumber) % this.images.length
-            }
         },
 
         methods: {
@@ -113,13 +110,6 @@
                 clearTimeout(this.timer);
                 this.timer = null;
             },
-
-            next: function () {
-                this.currentNumber++;
-            },
-            prev: function () {
-                this.currentNumber--;
-            }
         },
     }
 </script>
@@ -132,12 +122,6 @@
 
     div {
         display: block;
-    }
-
-    body {
-        margin: 0;
-        padding: 0;
-        line-height: 1.4;
     }
 
     li,
@@ -183,6 +167,12 @@
         width: 50px;
         height: 50px;
         left: 100px;
+        z-index: 999;
+    }
+
+    image-slider {
+        top: 0;
+        bottom: 0;
     }
 
     image-slider .next_btn img {
@@ -191,10 +181,11 @@
         width: 50px;
         height: 50px;
         right: 100px;
+        z-index: 999;
     }
 
+
     .blind {
-        position: absolute;
         display: none;
         overflow: hidden;
     }
@@ -209,7 +200,9 @@
 
     .main_content {
         max-width: 100%;
+        top: 1rem;
         padding: 0 140px 120px;
+        z-index: 999;
     }
 
     .content_summary {
@@ -232,7 +225,7 @@
 
     .summary_container::before {
         content: '';
-        position: absolute;
+
         left: 0;
         top: 0;
         width: 1px;
@@ -334,19 +327,21 @@
         height: 50px;
         left: 200px;
         font-weight: bold;
-        font-size: 32px;
+        font-size: 35px;
         color: white;
+        z-index: 999;
     }
 
     .alt {
         position: absolute;
         bottom: 210px;
-        width: 350px;
+        width: 400px;
         height: 50px;
         left: 200px;
         font-weight: bold;
         font-size: 19px;
         color: white;
+        z-index: 999;
     }
 
     .number {
@@ -358,27 +353,13 @@
         font-weight: bold;
         font-size: 16px;
         color: white;
+        z-index: 999;
     }
 
     .fade-enter-active,
     .fade-leave-active {
-        transition: all .5s ease;
-        opacity: 1;
+        transition: opacity 1s ease;
     }
-
-    .fade-enter,
-    .fade-leave-to {
-        opacity: 0;
-    }
-
-    .fade-leave-to {
-        display: none;
-    }
-
-
-
-
-
 
     @media only screen and (max-width: 1600px) {
         .summary_container {

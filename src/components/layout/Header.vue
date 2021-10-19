@@ -67,7 +67,9 @@
   };
 </script>
 <style>
-
+  .navbar {
+    z-index: 999;
+  }
   .nav-link:after {
     content: "";
     position: absolute;
