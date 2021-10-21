@@ -7,6 +7,7 @@
                 <p class="alt" v-html="alt[index]"></p>
                 <p class="number">{{ index+1 }} | {{ images.length }}</p>
             </swiper-slide>
+
             <div class="swiper-button-prev" slot="button-prev"></div>
             <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
@@ -183,6 +184,11 @@
         height: 50px;
         right: 100px;
         z-index: 999;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        background-image: url("https://dictionary.cambridge.org/ko/images/thumb/arrow_noun_002_01654.jpg?version=5.0.193");
     }
 
 
