@@ -2,8 +2,10 @@
     <div id="app">
         <swiper class="swiper" :options="swiperOption">
             <swiper-slide v-for="(image,index) in images" :key="image">
-                <img :src="image" />
-                <h1>{{ index+1 }} | {{ images.length }}</h1>
+                <img :src="image" class="swiper-img"/>
+                <p class="back_title" v-html="title[index]"></p>
+                <p class="alt" v-html="alt[index]"></p>
+                <p class="number">{{ index+1 }} | {{ images.length }}</p>
             </swiper-slide>
             <div class="swiper-button-prev" slot="button-prev"></div>
             <div class="swiper-button-next" slot="button-next"></div>
@@ -78,7 +80,6 @@
                 timer: null,
                 swiperOption: {
                     slidesPerView: 1,
-                    spaceBetween: 30,
                     loop: true,
                     pagination: {
                         el: '.swiper-pagination',
@@ -359,6 +360,11 @@
     .fade-enter-active,
     .fade-leave-active {
         transition: opacity 1s ease;
+    }
+
+    .swiper-img {
+        width: 100%;
+        height: 600px;
     }
 
     @media only screen and (max-width: 1600px) {

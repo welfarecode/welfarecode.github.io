@@ -9,8 +9,7 @@
     <Footer />
   </div>
 </template>
-<script>
-  import 'animate.css';
+<script>  
   import Navbar from './components/layout/Header';
   import Footer from './components/layout/footer';
 
@@ -22,13 +21,10 @@
     },
     data() {
       return {
-        count: 0
       }
     },
     methods: {
-      clickit: function() {
-        this.count++;
-      }
+      
     }
   };
 </script>
