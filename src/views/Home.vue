@@ -323,36 +323,30 @@
 
     .back_title {
         position: absolute;
-        bottom: 280px;
-        width: 300px;
-        height: 50px;
-        left: 200px;
+        bottom: 27vh;
+        left: 11vw;
         font-weight: bold;
-        font-size: 35px;
+        font-size: 3vw;
         color: white;
         z-index: 999;
     }
 
     .alt {
         position: absolute;
-        bottom: 210px;
-        width: 400px;
-        height: 50px;
-        left: 200px;
+        bottom: 20vh;
+        left: 11vw;
         font-weight: bold;
-        font-size: 19px;
+        font-size: 1vw;
         color: white;
         z-index: 999;
     }
 
     .number {
         position: absolute;
-        bottom: 140px;
-        width: 50px;
-        height: 50px;
-        left: 200px;
+        bottom: 12vh;
+        left: 11vw;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 1vw;
         color: white;
         z-index: 999;
     }
@@ -364,7 +358,7 @@
 
     .swiper-img {
         width: 100%;
-        height: 600px;
+        height: 70vh;
     }
 
     @media only screen and (max-width: 1600px) {
