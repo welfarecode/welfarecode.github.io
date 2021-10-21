@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <swiper class="swiper" :options="swiperOption">
+        <swiper class="swiper" ref="mySwiper" :options="swiperOption">
             <swiper-slide v-for="(image,index) in images" :key="image">
-                <img :src="image" class="swiper-img"/>
+                <img :src="image" class="swiper-img" />
                 <p class="back_title" v-html="title[index]"></p>
                 <p class="alt" v-html="alt[index]"></p>
                 <p class="number">{{ index+1 }} | {{ images.length }}</p>
@@ -79,12 +79,13 @@
                 ],
                 currentNumber: 0,
                 timer: null,
+                // 스위퍼 슬라이드 옵션 주기
                 swiperOption: {
-                    slidesPerView: 1,
+                    slidesPerView: 'auto',
                     loop: true,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true
+                    autoplay: { // 자동 슬라이드 설정 , 비 활성화 시 false
+                        delay: 3000, // 시간 설정
+                        disableOnInteraction: false,
                     },
                     navigation: {
                         nextEl: '.swiper-button-next',
@@ -94,24 +95,14 @@
             }
         },
         mounted() {
-            this.startRotation();
+            
         },
         computed: {
-            currentImg: function () {
-                return this.images[Math.abs(this.currentNumber) % this.images.length];
-            },
+            
         },
 
         methods: {
 
-            startRotation: function () {
-                this.timer = setInterval(this.next, 6000);
-            },
-
-            stopRotation: function () {
-                clearTimeout(this.timer);
-                this.timer = null;
-            },
         },
     }
 </script>
@@ -163,32 +154,32 @@
         -webkit-appearance: none;
     }
 
-    image-slider .prev_btn img {
-        position: absolute;
-        bottom: 240px;
-        width: 50px;
-        height: 50px;
-        left: 100px;
-        z-index: 999;
-    }
-
-    image-slider {
-        top: 0;
-        bottom: 0;
-    }
-
-    image-slider .next_btn img {
-        position: absolute;
-        bottom: 240px;
-        width: 50px;
-        height: 50px;
-        right: 100px;
-        z-index: 999;
-    }
-
-    .swiper-button-prev,
     .swiper-button-next {
-        background-image: url("https://dictionary.cambridge.org/ko/images/thumb/arrow_noun_002_01654.jpg?version=5.0.193");
+        background-image: url('https://i.imgur.com/36dhI0c.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 4vw;
+        height: 9vh;
+        margin-top: 14vh;
+        margin-right: 2vw;
+    }
+
+    .swiper-button-prev {
+        background-image: url('https://i.imgur.com/dgJogVL.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 4vw;
+        height: 9vh;
+        margin-top: 14vh;
+        margin-left: 2vw;
+    }
+
+    .swiper-button-next::after {
+        display: none;
+    }
+
+    .swiper-button-prev::after {
+        display: none;
     }
 
 
@@ -332,17 +323,17 @@
         bottom: 27vh;
         left: 11vw;
         font-weight: bold;
-        font-size: 3vw;
+        font-size: 7vh;
         color: white;
         z-index: 999;
     }
 
     .alt {
         position: absolute;
-        bottom: 20vh;
+        bottom: 18vh;
         left: 11vw;
         font-weight: bold;
-        font-size: 1vw;
+        font-size: 3vh;
         color: white;
         z-index: 999;
     }
@@ -352,7 +343,7 @@
         bottom: 12vh;
         left: 11vw;
         font-weight: bold;
-        font-size: 1vw;
+        font-size: 3vh;
         color: white;
         z-index: 999;
     }
@@ -371,6 +362,47 @@
         .summary_container {
             padding-left: 20px;
             padding-right: 20px;
+        }
+    }
+
+     @media only screen and (max-width: 900px) {
+        .swiper-img {
+            width: 100%;
+            height: 40vh;
+        }
+        .back_title {
+            bottom: 7vh;
+            font-size: 35px;
+        }
+
+        .alt {
+            bottom: 2vh;
+            font-size: 15px;
+        }
+
+        .number {
+            font-size: 15px;
+            left:48%;
+            bottom: 0;
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+
+        .back_title {
+            bottom: 7vh;
+            font-size: 17px;
+        }
+
+        .alt {
+            bottom: 1vh;
+            font-size: 10px;
+        }
+
+        .number {
+            font-size: 10px;
+            left:47%;
+            bottom: 0;
         }
     }
 </style>
