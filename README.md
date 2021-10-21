@@ -1,24 +1,21 @@
-# welfarecode.github.io
+# WELFARE CODE HOMEPAGE BY VUE
 
-## Project setup
+## 프로젝트 세팅 (Add node_modules folder)
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 개발을 위한 가상 서버 열기(Representation : localhost:8080)
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 실제 웹사이트 개발을 위한 PRODUCTION 만들기 (VUE FILES -> HTML FILES)
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Lint하기
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
